@@ -12,16 +12,13 @@ body .nav-link {
     margin-left: 20%;
 }
 
-h1{
-    text-align: center;
-}
 .dashboard {
     line-height: 3vw;
     margin-top: 10px;
 }
 
 .dashboard img {
-    width: 30vw;
-    height: 50vh;
+    width: 25vw;
+    height: 40vh;
     border-radius: 5px;
 }
