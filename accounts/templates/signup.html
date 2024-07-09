@@ -1,11 +1,18 @@
-{% extends 'base.html' %}
-{% block title %} Sign up Form {% endblock %}
+
+{% extends 'auth_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Sign Up {% endblock %}
 {% block body %}
-<h2>Signup</h2>
-<form method="POST"   action="{% url 'signup' %}"   enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <a href="{% url 'login' %}">Login here</a>
-  <button type="submit">Sign Up</button>
-</form>
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if error_message %}
+      <p>{{ error_message }}</p>
+      {% endif %}
+      {{ form|crispy }}
+      <p>Already account?<a href="{% url 'login' %}">Login</a></p>
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+  </div>
 {% endblock %}

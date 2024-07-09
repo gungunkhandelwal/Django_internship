@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Patient Dashboard</h2>
+  <div class="dashboard">
+  <p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+  {% if user.profile_picture %}
+  <img src="{{ user.profile_picture.url }}" style="width: 100px; height: 100px;" alt="Profile Picture">
+  {% endif %}
+  <p>Email: {{ user.email }}</p>
+  <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+  </div>
+{% endblock %}

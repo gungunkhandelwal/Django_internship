@@ -1,21 +1,33 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from . models import *
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, ButtonHolder, Submit
+from .models import CustomUser
 
 class UserSignUpForm(UserCreationForm):
-    first_name=forms.CharField(max_length=100)
-    last_name=forms.CharField(max_length=100)
-    profile_picture=forms.ImageField()
-    email=forms.EmailField()
-    address_line1 = forms.CharField(max_length=100)
-    city = forms.CharField(max_length=50)
-    state = forms.CharField(max_length=50)
-    pincode = forms.CharField(max_length=10)
-
     class Meta:
-        model=CustomUser
-        fields=['username','first_name','last_name','email','profile_picture', 'password1', 'password2', 'address_line1', 'city', 'state', 'pincode', 'is_patient', 'is_doctor']
-
+        model = CustomUser
+        fields = ['username', 'first_name', 'last_name', 'email', 'profile_picture', 'password1', 'password2', 'address_line1', 'city', 'state', 'pincode', 'is_patient', 'is_doctor']
     
-
-
+    def __init__(self, *args, **kwargs):
+        super(UserSignUpForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'profile_picture',
+            'password1',
+            'password2',
+            'address_line1',
+            'city',
+            'state',
+            'pincode',
+            'is_patient',
+            'is_doctor',
+            ButtonHolder(
+                Submit('submit', 'Sign Up', css_class='btn btn-primary')
+            )
+        )

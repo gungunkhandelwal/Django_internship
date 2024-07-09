@@ -15,18 +15,6 @@ class CustomUser(AbstractUser):
 
 
 
-    
-
-
-
-    
-
-
-    
-
-
-
-
 
 
 

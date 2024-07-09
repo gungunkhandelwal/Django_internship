@@ -10,9 +10,8 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')  # Replace 'dashboard' with your actual dashboard URL name
+            return redirect('dashboard')
         else:
-            # Handle invalid login
             return render(request, 'loginView.html', {'error_message': 'Invalid username or password.'})
     return render(request, 'loginView.html')
 
@@ -21,6 +20,7 @@ def signup(request):
         form=UserSignUpForm(request.POST,request.FILES)
         if form.is_valid():
             user=form.save()
+            print("save successfuly")
             login(request,user)
             return redirect('dashboard')
     else:
