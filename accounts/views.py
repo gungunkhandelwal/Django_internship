@@ -26,7 +26,7 @@ def signup(request):
     else:
         form=UserSignUpForm()
     
-    return render(request,'signup.html',{'form':form})
+    return render(request,'signup.html',{'form':form,'error_message':'Try Again'})
 
 def dashboard(request):
     if request.user.is_patient:

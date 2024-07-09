@@ -6,7 +6,7 @@
   {% if user.profile_picture %}
   <img src="{{ user.profile_picture.url }}" style="width: 100px; height: 100px;" alt="Profile Picture">
   {% endif %}
-  <p>Email: {{ user.email }}</p>
-  <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+  <p><b>Email:</b> {{ user.email }}</p>
+  <p><b>Address:</b> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
   </div>
 {% endblock %}

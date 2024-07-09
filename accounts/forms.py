@@ -4,6 +4,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, ButtonHolder, Submit
 from .models import CustomUser
 
+# SignupForm
 class UserSignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser

@@ -6,18 +6,19 @@ body {
     height: 100%;
 }
 
-body h1{
+body h1 {
     text-align: center;
     color: aliceblue;
 }
+
 body .container {
     height: 100%;
     align-content: center;
 }
 
-.card-header h3{
+.card-header h3 {
     color: white;
-    }
+}
 
 body .card {
     height: 370px;
@@ -72,7 +73,6 @@ input:focus {
 
 /* Sign Up */
 
-h2{
+h2 {
     text-align: center;
-    margin-top: 10px;
 }

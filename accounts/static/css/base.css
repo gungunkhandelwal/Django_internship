@@ -1,23 +1,27 @@
-body .navbar{
+body .navbar {
     background-color: blueviolet;
     color: white;
 }
 
-body .nav-link{
+body .nav-link {
     text-decoration: none;
     color: aliceblue;
 }
 
-.container{
+.container {
     margin-left: 20%;
 }
 
-.dashboard{
+h1{
+    text-align: center;
+}
+.dashboard {
     line-height: 3vw;
+    margin-top: 10px;
 }
 
-.dashboard img{
-     width: 20vw;
-     height: 30vh;
-     border-radius: 5px;  
+.dashboard img {
+    width: 30vw;
+    height: 50vh;
+    border-radius: 5px;
 }
