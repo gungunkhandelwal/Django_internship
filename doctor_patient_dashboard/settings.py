@@ -26,12 +26,13 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))  #Reading .env
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =os.environ.get("SECRET_KEY")
+# SECRET_KEY =os.environ.get("SECRET_KEY")
+SECRET_KEY='9d8c6c8408be79af6baeb9f65ac2992d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower() =="true"
+DEBUG = True#os.environ.get("DEBUG","False").lower() =="true"
 
-ALLOWED_HOSTS =['django-internship.onrender.com','localhost']
+ALLOWED_HOSTS =['django-internship.onrender.com','127.0.0.1']
 
 
 # Application definition
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'accounts',
+    'blog',
+
     'crispy_forms',
     'crispy_bootstrap4',
 ]
@@ -87,7 +90,7 @@ WSGI_APPLICATION = 'doctor_patient_dashboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD':env('DATABASE_PASSWORD'),
@@ -95,7 +98,6 @@ DATABASES = {
         'PORT':env('DATABASE_PORT')
     }
 }
-
 database_url=os.environ.get("DATABASE_URL")
 
 # Password validation

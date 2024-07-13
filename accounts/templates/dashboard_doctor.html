@@ -9,5 +9,7 @@
 {% endif %}
   <p><b>Email:</b> {{ user.email }}</p>
   <p><b>Address:</b> {{ user.address_line1|capfirst }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+  <a href="{% url 'add_blog' %}" class="btn btn-primary">Add Post</a>
+  <a href="{% url 'display_blog' %}" class="btn btn-primary">See All Post</a>
   </div>
 {% endblock %}

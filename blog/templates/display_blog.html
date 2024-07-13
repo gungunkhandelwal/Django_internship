@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<h1>All Blogs</h1>
+{% for blog in blogs %}
+<h3>{{blog.title}}</h3>
+<p>{{blog.summary}}</p>
+<a href="{% url 'update_blog' blog.id %}" class="btn btn-primary">Edit</a>
+<a href="{% url 'delete_blog' blog.id %}" class="btn btn-primary">Delete</a>
+<hr>
+{% endfor %}
+{% endblock %}
