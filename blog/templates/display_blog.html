@@ -5,8 +5,10 @@
 {% for blog in blogs %}
 <h3>{{blog.title}}</h3>
 <p>{{blog.summary}}</p>
+{% if not request.user.is_patient %}
 <a href="{% url 'update_blog' blog.id %}" class="btn btn-primary">Edit</a>
 <a href="{% url 'delete_blog' blog.id %}" class="btn btn-primary">Delete</a>
+{% endif %}
 <hr>
 {% endfor %}
 {% endblock %}

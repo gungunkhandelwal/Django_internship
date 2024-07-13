@@ -10,4 +10,5 @@
   <p><b>Email:</b> {{ user.email }}</p>
   <p><b>Address:</b> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
   </div>
+  <a href="{% url 'display_blog' %}" class="btn btn-primary">See All Post</a>
 {% endblock %}
