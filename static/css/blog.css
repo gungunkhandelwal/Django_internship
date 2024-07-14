@@ -1,0 +1,35 @@
+.heading{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dashboard{
+    margin-top: 5vh;
+}
+
+body .blog_img{
+    position: absolute;
+    top: 4%;
+    left: 82%;
+    width: 13vw;
+    height: 22vh;
+    border-radius: 8px;
+}
+
+.blog_title{
+    display: flex;
+    text-decoration: underline;
+}
+
+
+/* View Blog */
+body .view_img_blog{
+    width: 70%;
+    height: 65vh;
+    margin-left: 12%;
+}
+
+body .blog_content{
+    font-size: 18px;
+    line-height: 2vw;
+}
