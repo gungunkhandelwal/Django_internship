@@ -32,10 +32,12 @@ SECRET_KEY =os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =[    
+ALLOWED_HOSTS =[
     'localhost',
     '127.0.0.1',
-    'django-internship-1.onrender.com',]
+    'django-internship-1.onrender.com'
+]
+    
 
 
 # Application definition
@@ -93,7 +95,7 @@ WSGI_APPLICATION = 'doctor_patient_dashboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD':env('DATABASE_PASSWORD'),
@@ -101,7 +103,7 @@ DATABASES = {
         'PORT':env('DATABASE_PORT')
     }
 }
-database_url=env("DATABASE_URL")
+# database_url=env("DATABASE_URL")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
