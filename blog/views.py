@@ -3,29 +3,12 @@ from . forms import *
 from . models import *
 
 
-# def add_blog(request):
-#     if request.user.is_authenticated:
-#              if request.user.is_doctor:
-#                   if request.method =='POST':
-#                       form=BlogPostForm(request.POST,request.FILES)
-#                       if form.is_valid():
-#                              blog = form.save(commit=False)
-#                              blog.author = request.user
-#                              blog.save()
-#                              print("Add blog sucessfully")
-#                              return render(request,'dashboard_doctor.html')
-#                   else:
-#                      print('not working')
-#                      form=BlogPostForm()
-#     else:
-#          return redirect('login')
-#     return render(request,'add_blog.html',{'form':form})
 def add_blog(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
     if not request.user.is_doctor:
-        # Handle case where user is not a doctor, maybe show an error or redirect
+
         return render(request, 'error.html', {'message': 'You are not authorized to add a blog.'})
 
     if request.method == 'POST':
@@ -35,7 +18,7 @@ def add_blog(request):
             blog.author = request.user
             blog.save()
             print("Add blog successfully")
-            return redirect('dashboard')  # Assuming 'dashboard_doctor' is the name of the URL
+            return redirect('dashboard')
         else:
             print('Form is invalid')
     else:
@@ -43,9 +26,18 @@ def add_blog(request):
 
     return render(request, 'add_blog.html', {'form': form})
 
-def doctor_display_blog(request):
-     blog=BlogPost.objects.all()
-     return render(request,'display_blog.html',context={'blogs':blog})
+
+def display_blog(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    if request.user.is_doctor:
+        user_blog=BlogPost.objects.filter(author=request.user)
+        return render(request,'blog_doctor.html',{'blogs':user_blog})
+    else:
+        categories=Category.objects.all()
+        categorized_blogs = {category: BlogPost.objects.filter(category=category, status='published') for category in categories}
+        return render(request,'blog_patient.html',context={'categorized_blogs':categorized_blogs})
+
      
 
 
@@ -75,6 +67,7 @@ def delete_blog(request,id):
     if not request.user.is_doctor:
         # Handle case where user is not a doctor, maybe show an error or redirect
         return render(request, 'error.html', {'message': 'You are not authorized to delete a blog.'})
+    
     blog=get_object_or_404(BlogPost,id=id)
     blog.delete()
     return redirect('dashboard')

@@ -12,6 +12,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
 </head>
 
@@ -20,7 +21,13 @@
         <span class="navbar-brand mb-0 h1">Dashboard</span>
     <div class="my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated %}
+            <!-- {% if not request.user.is_doctor %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'display_blog' %}"></a>
+              </li>
+
+            {% endif %} -->
+            {% if user.is_authenticated %}       
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
@@ -29,7 +36,7 @@
     </div>
 
       </nav>
-      <div class="container my-5">
+      <div class="container">
     {% block body %}
 
     {% endblock %}

@@ -9,7 +9,7 @@ body .nav-link {
 }
 
 .container {
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 .dashboard {
@@ -17,8 +17,9 @@ body .nav-link {
     margin-top: 10px;
 }
 
-.dashboard img {
+body .dashboard_img {
     width: 25vw;
     height: 40vh;
     border-radius: 5px;
+    margin-left: 20%;
 }

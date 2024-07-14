@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-  <h2>Patient Dashboard</h2>
+  <h2 class="heading">Patient Dashboard</h2>
   <div class="dashboard">
   <p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
   {% if user.profile_picture %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block body %}
 
- <h1>Add Blog</h1>
+ <h1 class="heading">Add Blog</h1>
  <form method="post" enctype="multipart/form-data" action="{% url 'add_blog' %}">
     {% csrf_token %}
     {{ form|crispy }}

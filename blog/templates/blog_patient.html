@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<h1 class="heading"> Blogs posted by category</h1>
+{% for category, blogs in categorized_blogs.items %}
+<h3>{{ category }}</h3>
+{% if blogs %}
+    <div class="list-group mb-4">
+        {% for blog in blogs %}
+            <a href="{% url 'display_blog' %}" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ blog.title }}</h5>
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid mb-2">
+                <p class="mb-1">{{ blog.summary|truncatewords:15 }}...</p>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No blog posts available in this category.</p>
+{% endif %}
+{% endfor %}
+{% endblock %}
