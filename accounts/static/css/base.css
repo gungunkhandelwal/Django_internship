@@ -1,0 +1,13 @@
+body .navbar {
+    background-color: blueviolet;
+    color: white;
+}
+
+body .nav-link {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.container {
+    margin-left: 7%;
+}
