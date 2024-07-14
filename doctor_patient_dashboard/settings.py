@@ -34,7 +34,6 @@ DEBUG = True
 ALLOWED_HOSTS =[
     'localhost',
     '127.0.0.1',
-    'django-internship-1.onrender.com'
 ]
     
 
