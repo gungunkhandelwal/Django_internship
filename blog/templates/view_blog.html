@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Blogs{% endblock %}
 {% block body %}
 {% for blog in blogs %}
 <h1 class="heading">{{blog.title}}</h1>
