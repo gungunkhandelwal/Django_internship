@@ -32,7 +32,7 @@ SECRET_KEY =os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True#os.environ.get("DEBUG","False").lower() =="true"
 
-ALLOWED_HOSTS =['django-internship.onrender.com','127.0.0.1']
+ALLOWED_HOSTS =['django-internship-1.onrender.com','127.0.0.1']
 
 
 # Application definition
