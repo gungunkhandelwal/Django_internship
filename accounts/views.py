@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from . forms import *
 from django.urls import reverse
+from django.contrib import messages
 
 def login_view(request):
     if request.method == 'POST':
@@ -12,7 +13,8 @@ def login_view(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            return render(request, 'loginView.html', {'error_message': 'Invalid username or password.'})
+            messages.error(request, "Invalid Username and Password")
+            return render(request, 'loginView.html')
     return render(request, 'loginView.html')
 
 def signup(request):

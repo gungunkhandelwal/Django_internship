@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+{% for blog in blogs %}
+<h1 class="heading">{{blog.title}}</h1>
+<br>
+<img src="{{ blog.image.url }}"  alt="Blogs" class="img-thumbnail view_img_blog" >
+<br>
+<br>
+<p>Posted On : <i>{{blog.created_at}}</i></p>
+<h3>Content :</h3>
+<p class="blog_content">{{blog.content}}</p>
+<br>
+{% if request.user.is_doctor %}
+<a href="{% url 'update_blog' blog.id %}" class="btn btn-info">Edit</a>
+<a href="{% url 'delete_blog' blog.id %}" class="btn btn-info ml-5">Delete</a>
+{% endif%}
+
+{% endfor %}
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from . forms import *
 from . models import *
+from django.contrib import messages
 
 
 def add_blog(request):
@@ -17,15 +18,18 @@ def add_blog(request):
             blog = form.save(commit=False)
             blog.author = request.user
             blog.save()
-            print("Add blog successfully")
+            messages.info(request,"Add Blog Successfully!!")
             return redirect('dashboard')
         else:
-            print('Form is invalid')
+            messages.info(request,'Form is invalid')
     else:
         form = BlogPostForm()
 
     return render(request, 'add_blog.html', {'form': form})
 
+def view_blog(request,id):
+    blog_detail=BlogPost.objects.filter(id=id)
+    return render(request,'view_blog.html',context={'blogs':blog_detail})
 
 def display_blog(request):
     if not request.user.is_authenticated:
@@ -38,7 +42,6 @@ def display_blog(request):
         categorized_blogs = {category: BlogPost.objects.filter(category=category, status='published') for category in categories}
         return render(request,'blog_patient.html',context={'categorized_blogs':categorized_blogs})
 
-     
 
 
 def update_blog(request,id):
@@ -54,7 +57,7 @@ def update_blog(request,id):
         form = BlogPostForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             form.save()
-            print("Updated")
+            messages.info(request,"Updated Blog!!")
             return redirect('display_blog') 
     else:
         form = BlogPostForm(instance=blog)
@@ -70,4 +73,5 @@ def delete_blog(request,id):
     
     blog=get_object_or_404(BlogPost,id=id)
     blog.delete()
+    messages.info(request,"Deleted Blog Post Successfully!!")
     return redirect('dashboard')

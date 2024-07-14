@@ -9,16 +9,5 @@ body .nav-link {
 }
 
 .container {
-    margin-left: 20%;
-}
-
-.dashboard {
-    line-height: 3vw;
-    margin-top: 10px;
-}
-
-.dashboard img {
-    width: 25vw;
-    height: 40vh;
-    border-radius: 5px;
+    margin-left: 7%;
 }

@@ -2,12 +2,24 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block body %}
-<h1 class="heading">All Blogs</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+<h1 class="heading">All Blog Post</h1>
 {% for blog in blogs %}
-<h3>{{blog.title}}</h3>
-<p>{{blog.summary}}</p>
-<a href="{% url 'update_blog' blog.id %}" class="btn btn-primary">Edit</a>
-<a href="{% url 'delete_blog' blog.id %}" class="btn btn-primary">Delete</a>
+<div class="listing list-group-item list-group-item-action">
+    <h3>{{blog.title}}</h3>
+    <p><b>Status: </b>{{blog.status|capfirst}}</p>
+    <img src="{{ blog.image.url }}" class="blog_img" alt="Blog Picture">
+    <p><b>Summary: </b>{{blog.summary|truncatewords:15}}</p>
+    <a href="{% url 'view_blog' blog.id %}" class="btn btn-info">View</a>
+</div>
 <hr>
 {% endfor %}
 {% endblock %}

@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-<h1 class="heading"> Blogs posted by category</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
 {% for category, blogs in categorized_blogs.items %}
-<h3>{{ category }}</h3>
+<h3 class="my-5">{{ category }}</h3>
 {% if blogs %}
     <div class="list-group mb-4">
         {% for blog in blogs %}
-            <a href="{% url 'display_blog' %}" class="list-group-item list-group-item-action">
-                <h5 class="mb-1">{{ blog.title }}</h5>
-                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid mb-2">
-                <p class="mb-1">{{ blog.summary|truncatewords:15 }}...</p>
-            </a>
+        <div class="listing list-group-item list-group-item-action">
+            <span class="blog_title">
+                <h3>{{blog.title}} by 
+                <i> Dr.{{blog.author|capfirst}}</i></h3>
+            </span>
+            <p>Posted On : {{blog.created_at}}</p>
+            <img src="{{ blog.image.url }}" class="blog_img" alt="Blog Picture">
+            <br>
+            <p><b>Summary:</b> {{blog.summary|truncatewords:15}}</p>
+            <a href="{% url 'view_blog' blog.id %}" class="btn btn-info">View</a>
+        </div>
         {% endfor %}
     </div>
 {% else %}
