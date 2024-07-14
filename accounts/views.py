@@ -3,6 +3,7 @@ from django.contrib.auth import login,authenticate,logout
 from . forms import *
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def login_view(request):
     if request.method == 'POST':
@@ -30,6 +31,7 @@ def signup(request):
     
     return render(request,'signup.html',{'form':form})
 
+@login_required(login_url='/')
 def dashboard(request):
     if request.user.is_patient:
         return render(request,'dashboard_patient.html')

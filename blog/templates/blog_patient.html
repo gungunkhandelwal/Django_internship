@@ -13,23 +13,24 @@
 {% for category, blogs in categorized_blogs.items %}
 <h3 class="my-5">{{ category }}</h3>
 {% if blogs %}
-    <div class="list-group mb-4">
-        {% for blog in blogs %}
-        <div class="listing list-group-item list-group-item-action">
-            <span class="blog_title">
-                <h3>{{blog.title}} by 
-                <i> Dr.{{blog.author|capfirst}}</i></h3>
-            </span>
-            <p>Posted On : {{blog.created_at}}</p>
-            <img src="{{ blog.image.url }}" class="blog_img" alt="Blog Picture">
-            <br>
-            <p><b>Summary:</b> {{blog.summary|truncatewords:15}}</p>
-            <a href="{% url 'view_blog' blog.id %}" class="btn btn-info">View</a>
-        </div>
-        {% endfor %}
+<div class="list-group mb-4">
+    {% for blog in blogs %}
+    <div class="listing list-group-item list-group-item-action">
+        <span class="blog_title">
+            <h3>{{blog.title}} by
+                <i> Dr.{{blog.author|capfirst}}</i>
+            </h3>
+        </span>
+        <p>Posted On : {{blog.created_at}}</p>
+        <img src="{{ blog.image.url }}" class="blog_img" alt="Blog Picture">
+        <br>
+        <p><b>Summary:</b> {{blog.summary|truncatewords:15}}</p>
+        <a href="{% url 'view_blog' blog.id %}" class="btn btn-info">View</a>
     </div>
+    {% endfor %}
+</div>
 {% else %}
-    <p>No blog posts available in this category.</p>
+<p>No blog posts available in this category.</p>
 {% endif %}
 {% endfor %}
 {% endblock %}

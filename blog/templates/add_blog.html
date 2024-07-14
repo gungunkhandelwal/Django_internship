@@ -3,8 +3,8 @@
 {% load crispy_forms_tags %}
 {% block body %}
 
- <h1 class="heading">Add Blog</h1>
- <form method="post" enctype="multipart/form-data" action="{% url 'add_blog' %}">
+<h1 class="heading">Add Blog</h1>
+<form method="post" enctype="multipart/form-data" action="{% url 'add_blog' %}">
     {% csrf_token %}
     {{ form|crispy }}
     <button class="btn btn-info" type="submit">Add Blog</button>

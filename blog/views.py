@@ -2,11 +2,10 @@ from django.shortcuts import render,redirect,get_object_or_404
 from . forms import *
 from . models import *
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='/')
 def add_blog(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
 
     if not request.user.is_doctor:
 
@@ -27,13 +26,13 @@ def add_blog(request):
 
     return render(request, 'add_blog.html', {'form': form})
 
+@login_required(login_url='/')
 def view_blog(request,id):
     blog_detail=BlogPost.objects.filter(id=id)
     return render(request,'view_blog.html',context={'blogs':blog_detail})
 
+@login_required(login_url='/')
 def display_blog(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
     if request.user.is_doctor:
         user_blog=BlogPost.objects.filter(author=request.user)
         return render(request,'blog_doctor.html',{'blogs':user_blog})
@@ -43,10 +42,8 @@ def display_blog(request):
         return render(request,'blog_patient.html',context={'categorized_blogs':categorized_blogs})
 
 
-
+@login_required(login_url='/')
 def update_blog(request,id):
-    if not request.user.is_authenticated:
-        return redirect('login')
 
     if not request.user.is_doctor:
         # Handle case where user is not a doctor, maybe show an error or redirect
@@ -63,9 +60,8 @@ def update_blog(request,id):
         form = BlogPostForm(instance=blog)
     return render(request, 'update_blog.html', {'form': form, 'blog': blog})
 
+@login_required(login_url='/')
 def delete_blog(request,id):
-    if not request.user.is_authenticated:
-        return redirect('login')
 
     if not request.user.is_doctor:
         # Handle case where user is not a doctor, maybe show an error or redirect
