@@ -26,7 +26,8 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))  #Reading .env
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =os.environ.get("SECRET_KEY")
+# SECRET_KEY =os.environ.get("SECRET_KEY")
+SECRET_KEY='be8899602e3442747cfa92c96477db89'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -102,7 +103,7 @@ DATABASES = {
         'PORT':env('DATABASE_PORT')
     }
 }
-database_url=env("DATABASE_URL")
+# database_url=env("DATABASE_URL")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
