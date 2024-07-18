@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}List of Doctors {% endblock %}
+{% block body %}
+  <h2 class="heading">Doctors</h2>
+    {% for doctor in doctors %}
+    <div class="listing list-group-item list-group-item-action" style="margin-top: 20px;">
+        <h4> Dr. {{ doctor.first_name|capfirst }} {{ doctor.last_name }}</h4>
+        <img src="{{ doctor.profile_picture.url }}" class="blog_img" style="height: 14vh; width: 10vw;" alt="Profile Picture">
+        <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-info">Book Appointment</a>
+    </div>
+    {% endfor %}
+{% endblock %}

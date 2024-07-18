@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Appointment Details{% endblock %}
+{% block body %}
+{% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+        </ul>
+{% endif %}
+<h2 class="heading">Appointment Details</h2>
+<div class="row my-5 ">
+    <div class="col-md-6">
+        <div class="list-group-item list-group-item-action text-center" style="margin-left: 50%;">
+            <p><b>Doctor Name:</b> {{ appointment.doctor.first_name|capfirst }} {{ appointment.doctor.last_name }}</p>
+            <p><b>Speciality:</b> {{ appointment.speciality }}</p>
+            <p><b>Date:</b> {{ appointment.date }}</p>
+            <p><b>Start Time:</b> {{ appointment.start_time }}</p>
+            <p><b>End Time:</b> {{ appointment.end_time }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

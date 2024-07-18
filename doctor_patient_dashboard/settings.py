@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'blog',
+    'appointments',
 
     'crispy_forms',
     'crispy_bootstrap4',
@@ -155,3 +156,6 @@ LOGOUT_REDIRECT_URL = 'login'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# GOOGLE_CALENDAR_API_KEY =env('GOOGLE_CALENDAR_API_KEY')
+# GOOGLE_CALENDAR_CLIENT_SECRET_FILE = 'credentails.json'

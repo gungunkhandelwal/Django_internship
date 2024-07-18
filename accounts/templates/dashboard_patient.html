@@ -19,7 +19,8 @@
       <p><b>Email:</b> {{ user.email }}</p>
       <p><b>Address:</b> {{ user.address_line1|capfirst }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
       <div class="btn my-2">
-        <a href="{% url 'display_blog' %}" class="btn btn-info">See All Post</a>
+        <a href="{% url 'doctor_list' %}" class="btn btn-info">Doctor List</a>
+        <a href="{% url 'display_blog' %}" class="btn btn-info ml-5">See All Post</a>
       </div>
     </div>
   </div>
