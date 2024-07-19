@@ -156,11 +156,3 @@ LOGOUT_REDIRECT_URL = 'login'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# GOOGLE_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'credentials.json')
-
-
-# GOOGLE_SCOPES = ['https://www.googleapis.com/auth/calendar']
-
-
-# GOOGLE_REDIRECT_URI = 'http://127.0.0.1:8000/oauth2callback' 
